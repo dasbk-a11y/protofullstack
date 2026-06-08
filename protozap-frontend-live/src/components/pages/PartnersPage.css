@@ -1,0 +1,201 @@
+.partners-hero {
+  padding: calc(var(--nav-h) + 80px) 0 96px;
+  background: var(--bg-1);
+  border-bottom: 1px solid var(--border);
+  position: relative;
+  overflow: hidden;
+}
+
+.partners-hero::before {
+  content: '';
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  top: -100px;
+  right: -100px;
+  background: radial-gradient(circle, rgba(232,40,30,0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.partners-hero h1 { margin: 12px 0 20px; }
+.partners-hero p {
+  color: var(--text-2);
+  font-size: 1.05rem;
+  line-height: 1.75;
+  max-width: 560px;
+}
+
+.sponsorship-hero,
+.spotlight-hero {
+  background: linear-gradient(135deg, var(--bg-1) 0%, var(--bg-2) 100%);
+}
+
+/* Commission */
+.commission-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+}
+
+.commission-card {
+  text-align: center;
+  padding: 40px 24px;
+  border-radius: 0;
+}
+.commission-card:first-child { border-radius: var(--r-lg) 0 0 var(--r-lg); border-right: none; }
+.commission-card:last-child { border-radius: 0 var(--r-lg) var(--r-lg) 0; border-left: none; }
+
+.commission-year { margin-bottom: 12px; color: var(--text-3); }
+.commission-pct {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 4rem;
+  color: var(--red);
+  line-height: 1;
+  margin-bottom: 8px;
+}
+.commission-desc { color: var(--text-2); font-size: 0.88rem; }
+
+/* Perks */
+.perk-card {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.perk-card strong { color: var(--text); }
+.perk-card p { color: var(--text-2); font-size: 0.92rem; line-height: 1.65; }
+
+/* Good fit */
+.fit-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 680px;
+  margin: 0 auto;
+}
+.fit-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 18px 20px;
+  background: var(--bg-2);
+  border: 1px solid var(--border);
+  border-radius: var(--r-md);
+  font-size: 0.95rem;
+  line-height: 1.55;
+}
+.fit-check {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: rgba(232,40,30,0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--red);
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+/* Steps */
+.steps-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  max-width: 680px;
+  margin: 0 auto;
+  position: relative;
+}
+.steps-list::before {
+  content: '';
+  position: absolute;
+  left: 24px;
+  top: 48px;
+  bottom: 48px;
+  width: 2px;
+  background: var(--border);
+}
+
+.step-row {
+  display: flex;
+  gap: 28px;
+  align-items: flex-start;
+  padding: 24px 0;
+  position: relative;
+}
+
+.step-num {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--red);
+  color: #fff;
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+}
+
+.step-row h3 { margin-bottom: 6px; }
+.step-row p { color: var(--text-2); font-size: 0.92rem; line-height: 1.65; }
+
+/* Apply form */
+.partners-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Sponsor benefits */
+.benefit-card {
+  text-align: center;
+  padding: 40px 28px;
+}
+.benefit-stat {
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 4rem;
+  color: var(--red);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.benefit-label { margin-bottom: 12px; }
+.benefit-card p { color: var(--text-2); font-size: 0.9rem; }
+
+/* Skills */
+.skill-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-size: 0.95rem;
+}
+.skill-check {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(232,40,30,0.15);
+  color: var(--red);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* Spotlights grid */
+.spotlights-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+@media (max-width: 768px) {
+  .commission-grid { grid-template-columns: 1fr; }
+  .commission-card { border-radius: var(--r-lg) !important; border: 1px solid var(--border) !important; }
+  .spotlights-grid { grid-template-columns: 1fr; }
+  .steps-list::before { display: none; }
+}
