@@ -87,7 +87,7 @@ export function MaterialsPage() {
                       <span>{m.thicknesses?.[0]?.label} – {m.thicknesses?.[m.thicknesses.length-1]?.label}</span>
                     </div>
                     <div className="spec-row"><span className="label">Max Size</span><span>{m.max_size}</span></div>
-                    <div className="spec-row"><span className="label">Base Rate</span><span>${m.base_price}/in²</span></div>
+                    <div className="spec-row"><span className="label">Base Rate</span><span>₹{m.base_price}/mm²</span></div>
                   </div>
                   <div className="material-badges">
                     {getBadges(m).map(s => <span key={s} className="chip chip-red" style={{fontSize:'0.7rem'}}>{SVC_BADGE[s]||s}</span>)}
@@ -365,8 +365,8 @@ export function QuotePage() {
                   {dfmDetails.estimated_cut_time && (
                     <div style={{marginTop:12,paddingTop:12,borderTop:'1px solid var(--border)',display:'flex',gap:24}}>
                       <div><div className="label" style={{marginBottom:4}}>Cut Time</div><span>{dfmDetails.estimated_cut_time} min</span></div>
-                      <div><div className="label" style={{marginBottom:4}}>Perimeter</div><span>{dfmDetails.perimeter}"</span></div>
-                      <div><div className="label" style={{marginBottom:4}}>Area</div><span>{dfmDetails.area} in²</span></div>
+                      <div><div className="label" style={{marginBottom:4}}>Perimeter</div><span>{dfmDetails.perimeter} mm</span></div>
+                      <div><div className="label" style={{marginBottom:4}}>Area</div><span>{dfmDetails.area} mm²</span></div>
                     </div>
                   )}
                 </div>
@@ -454,18 +454,18 @@ export function QuotePage() {
                     </div>
                     <div style={{textAlign:'right',flexShrink:0}}>
                       <div style={{fontFamily:'var(--font-display)',fontWeight:900,fontSize:'1.5rem'}}>
-                        ${item.total_price.toFixed(2)}
+                        ₹{item.total_price.toFixed(2)}
                       </div>
-                      <div style={{color:'var(--text-2)',fontSize:'0.82rem'}}>${item.unit_price.toFixed(2)} / ea</div>
+                      <div style={{color:'var(--text-2)',fontSize:'0.82rem'}}>₹{item.unit_price.toFixed(2)} / ea</div>
                     </div>
                   </div>
                 </div>
               ))}
               <div className="quote-price-card card-highlight">
                 <div style={{display:'flex',flexDirection:'column',gap:10,marginBottom:20}}>
-                  {[['Subtotal', `$${quote.subtotal.toFixed(2)}`],
-                    ...(quote.nesting_savings>0 ? [['Nesting Savings', `-$${quote.nesting_savings.toFixed(2)}`, '#4ade80']] : []),
-                    ['Shipping', quote.shipping===0?'Free':`$${quote.shipping.toFixed(2)}`],
+                  {[['Subtotal', `₹${quote.subtotal.toFixed(2)}`],
+                    ...(quote.nesting_savings>0 ? [['Nesting Savings', `-₹${quote.nesting_savings.toFixed(2)}`, '#4ade80']] : []),
+                    ['Shipping', quote.shipping===0?'Free':`₹${quote.shipping.toFixed(2)}`],
                   ].map(([k,v,color]) => (
                     <div key={k} style={{display:'flex',justifyContent:'space-between',color:color||undefined}}>
                       <span style={{color:color||'var(--text-2)'}}>{k}</span><span>{v}</span>
@@ -474,7 +474,7 @@ export function QuotePage() {
                   <div style={{display:'flex',justifyContent:'space-between',borderTop:'1px solid var(--border)',paddingTop:10}}>
                     <strong style={{fontFamily:'var(--font-display)',fontSize:'1.1rem'}}>Total</strong>
                     <strong style={{fontFamily:'var(--font-display)',fontSize:'1.4rem',color:'var(--red)'}}>
-                      ${quote.total.toFixed(2)}
+                      ₹{quote.total.toFixed(2)}
                     </strong>
                   </div>
                 </div>
