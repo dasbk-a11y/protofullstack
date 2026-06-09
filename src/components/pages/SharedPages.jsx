@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Link, useParams, useNavigate } from 'react-router-dom'
 import { ChevronRight, Upload, ArrowRight, Check, X, Package, FileText, Loader2, AlertTriangle } from 'lucide-react'
+import { ServiceIcon } from '../icons/ServiceIcons'
 import { useAuth } from '../../context/AuthContext'
 import { materialsAPI, servicesAPI, quoteAPI, ordersAPI, uploadAPI } from '../../utils/api'
 import './SharedPages.css'
@@ -22,8 +23,7 @@ function ApiError({ msg }) {
   )
 }
 
-const SVC_BADGE = { laser:'⚡ Laser', bend:'🔧 Bending', hardware:'🔩 Hardware', tapping:'🪛 Tapping', countersink:'⭕ Countersink', powder:'🎨 Powder' }
-const SVC_ICONS = { 'laser-cutting':'⚡','tube-cutting':'🎯','bending':'🔧','cnc-tube-bending':'🔄','hardware-insertion':'🔩','tapping':'🪛','countersinking':'⭕','deburring':'✨','bead-blasting':'🌫️','tumbling':'🌀','powder-coating':'🎨' }
+const SVC_BADGE = { laser:'Laser', bend:'Bending', hardware:'Hardware', tapping:'Tapping', countersink:'Countersink', powder:'Powder' }
 
 /* ========================================
    MATERIALS PAGE  — live API
@@ -134,7 +134,7 @@ export function ServicesPage() {
             <div className="grid-3">
               {services.map(s => (
                 <Link key={s.slug} to={`/services/${s.slug}`} className="service-overview-card card">
-                  <div className="service-icon-lg">{SVC_ICONS[s.slug]||'🔩'}</div>
+                  <div className="service-icon-lg"><ServiceIcon slug={s.slug} size={40} /></div>
                   <h3 className="display-sm">{s.name}</h3>
                   <p style={{color:'var(--text-2)',fontSize:'0.88rem',lineHeight:1.6,flex:1}}>{s.short_desc}</p>
                   <span className="service-arrow">Details <ChevronRight size={14}/></span>
@@ -174,7 +174,7 @@ export function ServiceDetailPage() {
       <section className="page-hero">
         <div className="container">
           <div className="label-red">Service</div>
-          <h1 className="display-xl">{SVC_ICONS[svc.slug]||'🔩'} {svc.name}</h1>
+          <h1 className="display-xl" style={{display:'flex',alignItems:'center',gap:'12px'}}><ServiceIcon slug={svc.slug} size={36} /> {svc.name}</h1>
         </div>
       </section>
       <section className="section">

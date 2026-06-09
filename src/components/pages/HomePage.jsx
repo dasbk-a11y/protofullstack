@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { ArrowRight, Zap, Shield, Clock, ChevronRight } from 'lucide-react'
+import { ServiceIcon } from '../icons/ServiceIcons'
 import './HomePage.css'
 
 const STATS = [
@@ -10,12 +11,12 @@ const STATS = [
 ]
 
 const SERVICES_FEATURED = [
-  { icon: '⚡', title: 'Sheet Laser Cutting', desc: '8–10 kW fiber lasers. Up to 119″×59″. Carbon steel, stainless, aluminum, copper, brass.', slug: 'laser-cutting' },
-  { icon: '🔩', title: 'Brake Bending', desc: 'Up to 119″ bend length. ±1° tolerance. Auto-unfolds 3D models.', slug: 'bending' },
-  { icon: '🔧', title: 'CNC Tube Bending', desc: 'World\'s first in-browser DFM for bent tube. 0.75″–1.5″ OD.', slug: 'cnc-tube-bending' },
-  { icon: '🎯', title: 'Hardware Insertion', desc: '400+ PEM fasteners. Auto DFM verification of hole size & edge distance.', slug: 'hardware-insertion' },
-  { icon: '🎨', title: 'Powder Coating', desc: '17 Prismatic Powder colors. 50 lbs / 60″ max. +4 day lead time.', slug: 'powder-coating' },
-  { icon: '🔬', title: 'Countersinking', desc: '82° Imperial & 90° Metric. Auto-detected from 3D. Works on steel, SS, and aluminum.', slug: 'countersinking' },
+  { title: 'Sheet Laser Cutting', desc: '8–10 kW fiber lasers. Up to 119″×59″. Carbon steel, stainless, aluminum, copper, brass.', slug: 'laser-cutting' },
+  { title: 'Brake Bending', desc: 'Up to 119″ bend length. ±1° tolerance. Auto-unfolds 3D models.', slug: 'bending' },
+  { title: 'CNC Tube Bending', desc: 'World\'s first in-browser DFM for bent tube. 0.75″–1.5″ OD.', slug: 'cnc-tube-bending' },
+  { title: 'Hardware Insertion', desc: '400+ PEM fasteners. Auto DFM verification of hole size & edge distance.', slug: 'hardware-insertion' },
+  { title: 'Powder Coating', desc: '17 Prismatic Powder colors. 50 lbs / 60″ max. +4 day lead time.', slug: 'powder-coating' },
+  { title: 'Countersinking', desc: '82° Imperial & 90° Metric. Auto-detected from 3D. Works on steel, SS, and aluminum.', slug: 'countersinking' },
 ]
 
 const HOW_IT_WORKS = [
@@ -133,7 +134,7 @@ export default function HomePage() {
           <div className="grid-3">
             {SERVICES_FEATURED.map(s => (
               <Link key={s.slug} to={`/services/${s.slug}`} className="service-card card">
-                <div className="service-icon">{s.icon}</div>
+                <div className="service-icon"><ServiceIcon slug={s.slug} size={32} /></div>
                 <h3 className="display-sm">{s.title}</h3>
                 <p>{s.desc}</p>
                 <div className="service-link">
